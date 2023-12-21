@@ -5,291 +5,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Career Mint</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-      <style>
-         body {
-         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-         background-color: #f0f0f0;
-         margin: 0;
-         padding: 0;
-         }
-         nav {
-         background-color: #2980b9;
-         padding: 10px; /* Reduced padding */
-         position: fixed;
-         top: 0;
-         width: 100%;
-         z-index: 1000;
-         text-align: center;
-         display: relative;
-         justify-content: space-between;
-         align-items: center;
-         }
-         nav a {
-         color: #ecf0f1;
-         text-decoration: none;
-         display: inline-block;
-         padding: 10px;
-         margin: 0 10px;
-         }
-         #logo {
-         display: flex;
-         align-items: center;
-         }
-         #logo img {
-         width: 40px; /* Adjust the width as needed */
-         margin-right: 10px;
-         }
-         #jobPosts {
-         display: flex;
-         flex-wrap: wrap;
-         justify-content: space-around;
-         gap: 20px;
-         padding: 80px 20px 20px; /* Adjusted padding to make space for fixed nav */
-         }
-         .jobPost {
-         background-color: #e6ecee;
-         color: #2c3e50;
-         padding: 20px;
-         border-radius: 12px;
-         width: 300px;
-         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-         transition: transform 0.3s ease-in-out;
-         cursor: pointer;
-         position: relative;
-         }
-         .jobPost:hover {
-         transform: scale(1.05);
-         }
-         .jobPost::before {
-         content: '\f073';
-         font-family: 'Font Awesome 5 Free';
-         position: absolute;
-         top: 10px;
-         right: 10px;
-         font-size: 24px;
-         color: #e8e8e9;
-         }
-         /* Styling the View Details button */
-         .jobPost a {
-         display: inline-block;
-         padding: 10px 15px;
-         background-color: #3498db;
-         color: #fff;
-         text-decoration: none;
-         border-radius: 5px;
-         transition: background-color 0.3s ease-in-out;
-         }
-         .jobPost a:hover {
-         background-color: #2980b9;
-         }
-         #jobDetails {
-         display: none;
-         padding: 20px;
-         background-color: #ecf0f1;
-         border-radius: 12px;
-         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-         margin: 20px;
-         color: #2c3e50;
-         }
-         footer {
-         background-color: #FFFFFF;
-         color: #000000;
-         text-align: center;
-         padding: 20px;
-         /* Removed fixed positioning */
-         display: flex;
-         justify-content: space-around;
-         align-items: center;
-         }
-         footer a {
-         color: #000000;
-         text-decoration: none;
-         margin: 0 10px;
-         }
-         footer i {
-         font-size: 24px;
-         }
-         body {
-         overflow-x: hidden;
-         font-family: Sans-Serif;
-         margin: 0;
-         }
-         .menu-container {
-         position: fixed;
-         display: flex;
-         align-items: center;
-         margin-bottom: 2px;
-         background: #2980b9;
-         color: #332a2a;
-         padding: 1px;
-         z-index: 1;
-         -webkit-user-select: none;
-         user-select: none;
-         box-sizing: border-box;
-         }
-         .menu-logo {
-         line-height: 0;
-         margin: 0 20px;
-         }
-         .menu-logo img {
-         max-height: 90px;
-         max-width: 120px;
-         flex-shrink: 0;
-         }
-         .menu-container a {
-         text-decoration: none;
-         color: #2980b9;
-         transition: color 0.3s ease;
-         }
-         .menu-container a:hover {
-         color: #1cdbbd;
-         }
-         .menu-container input {
-         display: block;
-         width: 35px;
-         height: 25px;
-         margin: 0;
-         position: absolute;
-         cursor: pointer;
-         opacity: 0; /* hide this */
-         z-index: 2; /* and place it over the hamburger */
-         -webkit-touch-callout: none;
-         }
-         /* Burger menu */
-         .menu-container span {
-         display: block;
-         width: 33px;
-         height: 4px;
-         margin-bottom: 5px;
-         position: relative;
-         background: #332a2a;
-         border-radius: 3px;
-         z-index: 1;
-         transform-origin: 4px 0px;
-         transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-         background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-         opacity 0.55s ease;
-         }
-         .menu-container span:first-child {
-         transform-origin: 0% 0%;
-         }
-         .menu-container span:nth-child(3) {
-         transform-origin: 0% 100%;
-         }
-         .menu-container input:checked ~ span {
-         opacity: 1;
-         transform: rotate(45deg) translate(3px,-1px);
-         background: #2980b9;
-         }
-         .menu-container input:checked ~ span:nth-child(4) {
-         opacity: 0;
-         transform: rotate(0deg) scale(0.2, 0.2);
-         }
-         .menu-container input:checked ~ span:nth-child(3) {
-         transform: rotate(-45deg) translate(-5px,11px);
-         }
-         .menu ul {
-         list-style: none;
-         }
-         .menu li {
-         padding: 10px 0;
-         font-size: 22px;
-         }
-         /* mobile styles */
-         @media only screen and (max-width: 767px) { 
-         .menu-container {
-         flex-direction: column;
-         align-items: flex-end;
-         height:50px;
-         }
-         .menu-logo {
-         position: absolute;
-         left: 0;
-         top: 40%;
-         transform: translateY(-50%);
-         }
-         .menu-logo img {
-         max-height: 70px;
-         }
-         .menu {
-         position: absolute;
-         box-sizing: border-box;
-         width: 300px;
-         right: -300px;
-         top: 0;
-         margin: -20px;
-         padding: 75px 50px 50px;
-         background: #332a2a;
-         -webkit-font-smoothing: antialiased;
-         /* to stop flickering of text in safari */
-         transform-origin: 0% 0%;
-         transform: translateX(0%);
-         transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-         }
-         .menu-container input:checked ~ .menu {
-         transform: translateX(-100%);
-         }
-         }
-         /* desktop styles */
-         @media only screen and (min-width: 768px) { 
-         .menu-container {
-         width: 100%;
-         height:85px;
-         }
-         .menu-container a {
-         color: #332a2a;
-         }
-         .menu-container input {
-         display: none;
-         }
-         /* Burger menu */
-         .menu-container span {
-         display: none;
-         }
-         .menu {
-         position: relative;
-         width: 100%;
-         display: flex;
-         justify-content: space-between;
-         }
-         .menu ul {
-         display: flex;
-         padding: 0;
-         }
-         .menu li {
-         padding:  20px;
-         }
-         }
-         .menu-container a {
-         text-decoration: none;
-         color: #ebf1f5;
-         transition: color 0.3s ease;
-         font-weight: normal; /* Set default font weight */
-         }
-         .menu-container a:hover {
-         color: #070707;
-         }
-         .menu-container a.bold {
-         font-weight: bold; /* Make the font bold */
-         }
-
-         .jobPost a,
-   #jobDetails a {
-      display: inline-block;
-      padding: 10px 15px;
-      background-color: #3498db;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease-in-out;
-   }
-
-   .jobPost a:hover,
-   #jobDetails a:hover {
-      background-color: #2980b9;
-   }
-
-      </style>
+      <link rel="stylesheet" href="/styles.css">
+      <link rel="html" href="/resources.html">
+      <link rel="html" href="/tools.html">
       <!-- Add the link to your favicon -->
       <link rel="icon" type="image/png" href="path/to/your/favicon.png">
    </head>
@@ -301,30 +19,30 @@
          <span></span>
          <span></span>
          <!-- logo -->
-         <a href="#" class="menu-logo">
-            <img src="/logo.png" alt="Logo"/>
+         <a href="index.html" class="menu-logo">
+         <img src="/logo.png" alt="Logo"/>
          </a>
          <!-- menu items -->
          <div class="menu">
             <ul>
                <li>
-                  <a href="#" class="bold">
+                  <a href="index.html" class="bold">
                      <!-- Add "bold" class to make it bold -->
                      Home
                   </a>
                </li>
                <li>
-                  <a href="#" class="bold">
+                  <a href="/resources.html" class="bold">
                   Resources
                   </a>
                </li>
                <li>
-                  <a href="#" class="bold">
+                  <a href="/tools.html" class="bold">
                   Tools
                   </a>
                </li>
                <li>
-                  <a href="#" class="bold">
+                  <a href="mailto:business.careermint@gmail.com" class="bold">
                      <!-- Add "bold" class to make it bold -->
                      Contact
                   </a>
@@ -333,36 +51,30 @@
          </div>
       </nav>
       <div id="jobPosts">
-
-         <div class="jobPost" onclick="showJobDetails(3)">
+         <div class="jobPost">
             <h2><i style="font-size:24px" class="fa">&#xf0b1;</i> Software - Deep learning Intern </h2>
-            
             <h3> <img width="25" height="25" src="https://img.icons8.com/ios-filled/50/company.png" alt="company"/> Nvidia  </h3>
-            
             <p><img width="25" height="25" src="https://img.icons8.com/ios-filled/50/money-bag-euro.png" alt="money-bag-euro"/> Stipend: 60k to 70k </p>
             <p>Posted on: <span id="jobDate">21-12-2023</span></p>
-            <a href=" https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/India-Bengaluru/Software-Intern---Deep-Learning-Accelerator_JR1974845" onclick="applyForJob(1)">Apply</a>
+            <a href=" https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/India-Bengaluru/Software-Intern---Deep-Learning-Accelerator_JR1974845" target="_blank">Apply</a>
             <!-- <a href="#">View Details</a> -->
          </div>
-
-         <div class="jobPost" onclick="showJobDetails(2)">
+         <div class="jobPost">
             <h2><i style="font-size:24px" class="fa">&#xf0b1;</i> Software Engineer</h2>
-            
             <h3> <img width="25" height="25" src="https://img.icons8.com/ios-filled/50/company.png" alt="company"/> Headout </h3>
             <p>Experience: 1-2 years</p>
             <p>Posted on: <span id="jobDate">20-12-2023</span></p>
-            <a href=" https://boards.greenhouse.io/headoutreferrals/jobs/4285760006?gh_src=d9f761f96us" onclick="applyForJob(1)">Apply</a>
+            <a href=" https://boards.greenhouse.io/headoutreferrals/jobs/4285760006?gh_src=d9f761f96us" target="_blank">Apply</a>
             <!-- <a href="#">View Details</a> -->
          </div>
-         <div class="jobPost" onclick="showJobDetails(1)">
+         <div class="jobPost">
             <h2> <i style="font-size:24px" class="fa">&#xf0b1;</i> Software Engineer in Test</h2>
             <h3><img width="25" height="25" src="https://img.icons8.com/ios-filled/50/company.png" alt="company"/> Headout </h3>
             <p>Experience: 0-3 years</p>
             <p>Posted on: <span id="jobDate">20-12-2023</span></p>
-            <a href=" https://boards.greenhouse.io/headoutcareers/jobs/4025089006?gh_jid=4025089006&gh_src=a1deb4976us" onclick="applyForJob(1)">Apply</a>
+            <a href=" https://boards.greenhouse.io/headoutcareers/jobs/4025089006?gh_jid=4025089006&gh_src=a1deb4976us" target="_blank">Apply</a>
             <!-- <a href="#">View Details</a> -->
          </div>
-         
       </div>
       <div id="jobDetails">
          <!-- Job details content will be dynamically populated here -->
@@ -372,73 +84,13 @@
          <p id="jobDate"></p>
          <!-- Add more details as needed -->
          <a href="#" onclick="goBack()">Go Back</a>
-         
-
       </div>
-      <footer>
+      <footer >
          <a href="mailto:business.careermint@gmail.com"><i class="far fa-envelope"></i> Contact Us</a>
          <a href="https://twitter.com/career_mint" target="_blank"><i class="fab fa-twitter"></i></a>
          <iframe src="https://careermint.substack.com/embed" width="400" height="110" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
       </footer>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
-      <script>
-         function showJobDetails(jobId) {
-             // This is a simplified example; in a real scenario, you'd fetch job details from the server
-             const jobDetails = getJobDetailsById(jobId);
-         
-             // Update the jobDetails div with the content
-             document.getElementById('jobTitle').innerText = jobDetails.title;
-             document.getElementById('jobDescription').innerText = jobDetails.description;
-             document.getElementById('jobLocation').innerText = `Location: ${jobDetails.location}`;
-         
-             // Update the URL
-             window.history.pushState({}, '', `/job-details/${jobId}`);
-         
-             // Hide the jobPosts and show the jobDetails
-             document.getElementById('jobPosts').style.display = 'none';
-             document.getElementById('jobDetails').style.display = 'block';
-         }
-         
-         function goBack() {
-             // Show the jobPosts and hide the jobDetails
-             document.getElementById('jobPosts').style.display = 'flex';
-             document.getElementById('jobDetails').style.display = 'none';
-         
-             // Restore the original URL
-             window.history.pushState({}, '', '/');
-         }
-         
-         // This is a placeholder function; in a real scenario, you'd fetch job details from the server
-         function getJobDetailsById(jobId) {
-             // Assume some dummy data for demonstration purposes
-             const dummyData = [
-               
-                 { id: 1, title: "Software Engineer", description: "", location: "City A"},
-                 { id: 2, title: "Data Scientist", description: "We are looking for a skilled data scientist to analyze and interpret complex data sets.", location: "City B" },
-                 { id: 3, title: "Software Engineer", description: "Join our dynamic team and work on cutting-edge technologies.", location: "City A" },
-                 { id: 4, title: "Software Engineer", description: "Join our dynamic team and work on cutting-edge technologies.", location: "City A" },
-                 { id: 5, title: "Software Engineer", description: "Join our dynamic team and work on cutting-edge technologies.", location: "City A" },
-                 { id: 6, title: "Software Engineer", description: "Join our dynamic team and work on cutting-edge technologies.", location: "City A" },
-                 // Add more dummy data as needed
-             ];
-         
-             // Find the job details by ID
-             return dummyData.find(job => job.id === jobId);
-             
-         }
-         function applyForJob(jobId) {
-      // Replace this with your actual application logic
-      const jobDetails = getJobDetailsById(jobId);
-
-      // Assuming the jobDetails object has an 'applyUrl' property for the external URL
-      const applyUrl = jobDetails.applyUrl;
-
-      // Open the external URL in a new tab/window
-      window.open(applyUrl, '_blank');
-   }
-
-   
-
-      </script>
+      <script src="/script.js"></script>
    </body>
 </html>
