@@ -1,0 +1,82 @@
+#jobPosts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 25px;
+    padding: 20px 20px 20px;
+   /* Adjusted padding to make space for fixed nav */
+}
+.jobPost {
+    background-color: #e6ecee;
+    color: #000000;
+    padding: 20px;
+    border-radius: 12px;
+    width: 400px;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    position: relative;
+}
+.jobPost:hover {
+    transform: scale(1.05);
+}
+.jobPost::before {
+    content: '\f073';
+    font-family: 'Font Awesome 5 Free';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #e8e8e9;
+}
+/* Styling the View Details button */
+.jobPost a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+.jobPost a:hover {
+    background-color: #2980b9;
+}
+
+.jobPost a, #jobDetails a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #000000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+
+    transition: background-color 0.3s ease-in-out;
+}
+.jobPost a:hover, #jobDetails a:hover {
+    background-color:  rgba(41, 20, 119, 0.9);
+}
+
+
+
+
+.button {
+    padding:1em;
+    text-align: center;
+    display:inline-block;
+    text-decoration: none !important;
+    margin:0 auto;
+
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.container{
+  width: 100%;
+  text-align: center;
+}
